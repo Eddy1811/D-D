@@ -1,6 +1,5 @@
 public class OffensiveEquipment {
-    public static void main(String[] args) {
-    }
+
 
     private String type;
     private String name;

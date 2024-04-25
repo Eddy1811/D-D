@@ -1,7 +1,5 @@
 public class DefensiveEquipment {
-    public static void main(String[] args) {
 
-    }
     private String type;
     private int defenseLevel;
     private String name;

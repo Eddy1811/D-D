@@ -1,7 +1,4 @@
 public class Character {
-    public static void main(String[] args) {
-
-    }
 
     private String name;
     private String type;
