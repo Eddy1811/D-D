@@ -1,3 +1,5 @@
+package DandD.Equipment;
+
 public class DefensiveEquipment {
 
     private String type;

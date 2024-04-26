@@ -1,3 +1,5 @@
+package DandD.Equipment;
+
 public class OffensiveEquipment {
 
 
