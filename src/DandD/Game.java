@@ -10,19 +10,41 @@ public class Game {
     private Menu menu;
     private Character character;
 
+
+
+
+    public Game(){
+    }
+
     public Game(Menu menu) {
-        this.menu = new Menu();
+        this.menu = menu;
     }
 
-    public void setCharacter(String name, String type) {
+    public void chooseCharacter() {
+
+        String type = menu.chooseType();
+        String name = menu.chooseName();
+
         this.character = new Character(name, type);
+        if (type.equals("Guerrier")) {
+            character.setLifePoints(10);
+            character.setStrength(10);
+        }
+        else if (type.equals("Magicien")) {
+            character.setLifePoints(6);
+            character.setStrength(15);
+        }
     }
 
-    public Character start(String name, String type) {
-        character = new Character(name, type);
-        Box[] board = this.initializeBoard(64);
+    public void start() {
+        chooseCharacter();
+        if (!menu.isSure()) {
+            start();
+        }
+
         menu.startMenu(character);
-        return character;
+
+        play(0);
     }
 
 
@@ -36,8 +58,11 @@ public class Game {
 
 
     public void play(int Position) {
-
-        return;
+    while(Position <= 64){
+        Position += rollDice();
+        System.out.println("Case "+Position+"/64");
+    }
+    menu.winGame();
     }
 
 
