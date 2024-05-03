@@ -1,6 +1,6 @@
 package DandD.Equipment;
 
-public class OffensiveEquipment {
+public abstract class OffensiveEquipment {
 
 
     private String type;

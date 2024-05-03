@@ -1,5 +1,7 @@
 package DandD;
 
+import DandD.Hero.Character;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -9,6 +11,7 @@ public class Menu {
 
     Main main = new Main();
     Game game = new Game();
+
     public Menu() {
     }
 
@@ -20,8 +23,7 @@ public class Menu {
         String choice = input.nextLine();
         if (choice.equals("1")) {
             return true;
-        }
-        else{
+        } else {
             this.Quit();
             return false;
         }
@@ -34,9 +36,9 @@ public class Menu {
         System.out.println("   1 - Guerrier        2 - Magicien     9 - Quitter");
         String choice = entryOfPlayer.nextLine();
         if (choice.equals("1")) {
-            return "Guerrier";
+            return "Warrior";
         } else if (choice.equals("2")) {
-            return "Magicien";
+            return "Wizard";
         } else {
             this.Quit();
             return "";
@@ -67,14 +69,14 @@ public class Menu {
     }
 
 
-
-
-
-
-    public void startMenu(Character character){
-        System.out.println("Vous êtes "+character.getName()+", le plus grand "+character.getType()+" de tous les temps !");
-        System.out.println("Points de vie : "+character.getLifePoints());
-        System.out.println("Puissance d'attaque : "+character.getStrength());
+    public void startMenu(Character character) {
+        if (character.getType() == "Warrior") {
+            System.out.println("Vous êtes " + character.getName() + ", le plus grand Guerrier de tous les temps !");
+        } else {
+            System.out.println("Vous êtes " + character.getName() + ", le plus grand Magicien de tous les temps !");
+        }
+        System.out.println("Points de vie : " + character.getLifePoints());
+        System.out.println("Puissance d'attaque : " + character.getStrength());
 
         System.out.println("Bienvenue dans le jeu Donjons et Dragons !");
         System.out.println("Vous êtes à la case départ");
@@ -82,8 +84,13 @@ public class Menu {
     }
 
 
+    public void showTurn(int dice, int newPosition) {
+        System.out.println("Vous avez fais un " + dice);
+        System.out.println("Case " + newPosition + "/64");
+    }
 
-    public void loseGame(){
+
+    public void loseGame() {
         System.out.println("⡴⠒⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠉⠳⡆⠀\n" +
                 "⣇⠰⠉⢙⡄⠀⠀⣴⠖⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣆⠁⠙⡆\n" +
                 "⠘⡇⢠⠞⠉⠙⣾⠃⢀⡼⠀⠀⠀⠀⠀⠀⠀⢀⣼⡀⠄⢷⣄⣀⠀⠀⠀⠀⠀⠀⠀⠰⠒⠲⡄⠀⣏⣆⣀⡍\n" +
@@ -103,7 +110,6 @@ public class Menu {
     }
 
 
-
     public void winGame() {
         System.out.println("__   __ _      _\n" +
                 "\\ \\ / /(_) __ | |_  ___  _ _  _  _\n" +
@@ -111,25 +117,20 @@ public class Menu {
                 "  \\_/  |_|\\__| \\__|\\___/|_|   \\_, |\n" +
                 "                              |__/");
         System.out.println("Félicitations !!! Vous êtes sorti victorieux du labyrinthe de Donjons et Dragons !");
-    this.restart();
+        this.restart();
     }
 
-
-    public void restart(){
+    public void restart() {
         System.out.println("Voulez-vous rejouer ?");
         System.out.println("    1 - Rejouer     2- Quitter");
         Scanner input = new Scanner(System.in);
         String choice = input.nextLine();
         if (choice.equals("1")) {
-           main.launchGame();
-        }
-        else {
+            game.start();
+        } else {
             this.Quit();
         }
     }
-
-
-
 
 
     public void Quit() {

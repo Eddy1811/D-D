@@ -1,6 +1,8 @@
 package DandD.Equipment;
 
-public class DefensiveEquipment {
+import javax.swing.*;
+
+public abstract class DefensiveEquipment {
 
     private String type;
     private int defenseLevel;

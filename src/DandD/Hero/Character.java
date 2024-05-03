@@ -1,23 +1,23 @@
-package DandD;
+package DandD.Hero;
 
 import DandD.Equipment.DefensiveEquipment;
 import DandD.Equipment.OffensiveEquipment;
 
 import java.util.Objects;
 
-public class Character {
+public abstract class Character {
 
-    private String name;
-    private String type;
-    private int lifePoints;
-    private int strength;
-    private OffensiveEquipment offensiveEquipment;
-    private DefensiveEquipment defensiveEquipment;
+    protected String name;
+    protected String type;
+    protected int lifePoints;
+    protected int strength;
+    protected OffensiveEquipment offensiveEquipment;
+    protected DefensiveEquipment defensiveEquipment;
 
     // Constructeur  EN DESSOUS ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
 
-    Character() {
+    public Character() {
 
     }
 
@@ -27,9 +27,11 @@ public class Character {
     }
 
 
-    Character(String name, String type) {
+    Character(String name, String type, int lifePoints, int strength) {
         this.name = name;
         this.type = type;
+        this.lifePoints = lifePoints;
+        this.strength = strength;
     }
 
 // GETTER  EN DESSOUS ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
@@ -92,7 +94,7 @@ public class Character {
 
     @Override
     public String toString() {
-        return "DandD.Character{" +
+        return "DandD.Hero.Character{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", lifePoints=" + lifePoints +
